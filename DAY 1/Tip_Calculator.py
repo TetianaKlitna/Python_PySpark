@@ -1,3 +1,4 @@
+#Data Types
 #Tip Calculator
 print("Welcome to the tip calculator!")
 totalBill = float(input("What was the total bill? $"))
