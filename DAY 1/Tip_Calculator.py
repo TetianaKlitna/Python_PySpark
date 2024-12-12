@@ -1,5 +1,5 @@
-#Data Types
-#Tip Calculator
+# Data Types
+# Tip Calculator
 print("Welcome to the tip calculator!")
 totalBill = float(input("What was the total bill? $"))
 tipPercent = int(input("How much tip would you like give? 10, 12, or 15 "))

@@ -1,5 +1,5 @@
-#Logical operators
-#Python Pizza
+# Logical operators
+# Python Pizza
 print("Welcome to Python Pizza Deliveries!")
 size = input("What size pizza do you want? S, M, or L ").upper()
 pepperoni = input("Do you want pepperoni on your pizza? Y or N: ").upper()

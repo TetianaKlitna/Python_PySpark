@@ -9,4 +9,5 @@ def calculate_love_score(name1, name2):
             cnt_love += 1
     print(str(cnt_true) + str(cnt_love))
 
+
 calculate_love_score("Kanye West", "Kim Kardashian")
