@@ -14,7 +14,8 @@ game_over = False
 
 while not game_over:
 
-    print(f"****************************{available_tries}/6 LIVES LEFT****************************")
+    print(
+        f"****************************{available_tries}/6 LIVES LEFT****************************")
     guess = input("Guess a letter:\n").lower()
 
     if guess in placeholder:
@@ -24,7 +25,6 @@ while not game_over:
     for ind, item in enumerate(chosen_word):
         if guess == item:
             placeholder[ind] = item
-
 
     print("".join(placeholder))
 
@@ -41,6 +41,3 @@ while not game_over:
         print("****************************YOU WIN****************************")
 
     print(stages[available_tries])
-
-
-
