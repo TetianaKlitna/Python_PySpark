@@ -1,14 +1,15 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import lit, round, col
-from dataset_paths import flights_path
+from pyspark.sql.functions import lit, round, col, stddev
+from dataset_paths import flights_path, airports_path
 
 spark = SparkSession.builder.getOrCreate()
 
 flights = spark.read.csv(flights_path, header=True)
 # Cast columns to appropriate data types
 flights = flights.withColumn("distance", col("distance").cast("integer")) \
-                 .withColumn("air_time", col("air_time").cast("integer"))
-flights.createOrReplaceTempView('flights')
+                 .withColumn("air_time", col("air_time").cast("integer")) \
+                 .withColumn("dep_delay", col("dep_delay").cast("integer"))
+# flights.createOrReplaceTempView('flights')
 # Add columns duration_hrs, country
 flights = flights.withColumn("duration_hr", round(flights.air_time/60, 2)) \
                  .withColumn("country", lit("USA"))
@@ -57,3 +58,24 @@ flights.withColumn("duration_hrs", flights.air_time/60) \
        .groupBy() \
        .sum("duration_hrs") \
        .show()
+
+# Number of flights each plane made
+flights.groupBy("tailnum") \
+       .count() \
+       .show()
+# Average duration of flights from PDX and SEA
+flights.groupBy("origin") \
+       .avg("air_time") \
+       .show()
+
+# Standard deviation of departure delay
+by_month_dest = flights.groupBy("month", "dest")
+by_month_dest.avg("dep_delay").show()
+by_month_dest.agg(stddev("dep_delay")).show()
+
+airports = spark.read.csv(airports_path, header=True)
+# Rename the faa
+airports = airports.withColumnRenamed("faa", "dest")
+# Join the Data Frames flights and airports
+flights_with_airports = flights.join(airports, on="dest", how="leftouter")
+flights_with_airports.show()
