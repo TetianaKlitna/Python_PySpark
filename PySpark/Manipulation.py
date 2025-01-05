@@ -9,7 +9,7 @@ flights = spark.read.csv(flights_path, header=True)
 flights = flights.withColumn("distance", col("distance").cast("integer")) \
                  .withColumn("air_time", col("air_time").cast("integer")) \
                  .withColumn("dep_delay", col("dep_delay").cast("integer"))
-# flights.createOrReplaceTempView('flights')
+# flights.createOrReplaceTempView('flights') # only with sql()
 # Add columns duration_hrs, country
 flights = flights.withColumn("duration_hr", round(flights.air_time/60, 2)) \
                  .withColumn("country", lit("USA"))

@@ -1,4 +1,10 @@
 # RDD - Resilient Distributed Dataset
+
+# SparkContext is the main entry point for creating RDDs
+
+# For unstructured data (like logs, text), RDDs are very useful, 
+# but for structured data, you might prefer DataFrames for ease of use and better performance.
+
 # basic RDD transformation: map(), filter(), union(), flatMap()
 # basic RDD actins: collect(), take(n), first(), count()
 from pyspark import SparkContext
