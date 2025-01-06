@@ -1,1 +1,6 @@
-flights_path = 'file:///C:/WORKSPACE-PYTHON/100-Days-of-Code-Python/PySpark/DatasetFlights/flights.csv'
+flights_path = 'Datasets/flights.csv'
+airports_path = 'Datasets/airports.csv'
+planes_path = 'Datasets/planes.csv'
+people_path = 'Datasets/people.csv'
+fifa2018_path = 'Datasets/Fifa2018_dataset.csv'
+orders_data_path = 'Datasets/orders_data.parquet'
